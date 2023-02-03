@@ -1,8 +1,10 @@
 package com.KoreaIT.java.basicAM;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,7 +37,7 @@ public class Main {
 				String command2 = scv.nextLine();
 				System.out.printf("내용 )");
 				String command3 = scv.nextLine();
-				LocalDate now = LocalDate.now();
+				Date now = new Date();
 
 				Article article = new Article(i, now, command2, command3);
 				articles.add(article);
@@ -65,8 +67,9 @@ public class Main {
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article = articles.get(p - 1);
 						if (n == article.i) {
+							SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 							System.out.println("번호 : " + article.i);
-							System.out.println("날짜 : " + article.now);
+							System.out.println("날짜 : " + formatter.format(article.now));
 							System.out.println("제목 : " + article.command2);
 							System.out.println("내용 : " + article.command3);
 							break;
@@ -128,11 +131,11 @@ public class Main {
 
 class Article {
 	int i;
-	LocalDate now;
+	Date now;
 	String command2;
 	String command3;
 
-	public Article(int i, LocalDate now, String command2, String command3) {
+	public Article(int i, Date now, String command2, String command3) {
 		this.i = i;
 		this.now = now;
 		this.command2 = command2;

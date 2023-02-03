@@ -22,10 +22,9 @@ public class Main {
 					System.out.println("게시글이 없습니다.");
 				} else {
 					System.out.println("번호 / 제목");
-					Collections.reverse(articles);
-					for (Article articles2 : articles) {
+					for (int i2 = articles.size() - 1; i2 >= 0; i2--) {
+						Article articles2 = articles.get(i2);
 						System.out.println(articles2.i + "   / " + articles2.command2);
-						Collections.reverse(articles);
 					}
 				}
 			}
@@ -47,41 +46,68 @@ public class Main {
 			else if (command.startsWith("article detail")) {
 				String[] arr = command.split(" ");
 				int n = Integer.parseInt(arr[2]);
+				boolean a = false;
 
 				if (articles.size() == 0) {
 					System.out.println(n + "번 게시물은 존재하지 않습니다.");
 				} else {
 					for (int p = 1; p <= articles.size(); p++) {
-						if (n == p) {
-							Article article = articles.get(p - 1);
+						Article article = articles.get(p - 1);
+						if (n == article.i) {
+							a = true;
+							break;
+						} else {
+							a = false;
+						}
+					}
+				}
+				if (a = true) {
+					for (int p = 1; p <= articles.size(); p++) {
+						Article article = articles.get(p - 1);
+						if (n == article.i) {
 							System.out.println("번호 : " + article.i);
 							System.out.println("날짜 : " + article.now);
 							System.out.println("제목 : " + article.command2);
 							System.out.println("내용 : " + article.command3);
 							break;
-						} else {
-							System.out.println(n + "번 게시물은 존재하지 않습니다.");
-							break;
 						}
 					}
+
+				} else {
+					System.out.println(n + "번 게시물은 존재하지 않습니다.");
 				}
 			}
 
 			else if (command.startsWith("article delete")) {
 				String[] arr = command.split(" ");
 				int n = Integer.parseInt(arr[2]);
+				boolean b = false;
 				if (articles.size() == 0) {
 					System.out.println(n + "번 게시물은 존재하지 않습니다.");
 				} else {
-					for(int p = 1; p <= articles.size(); p++) {
-						if(n==p) {
-							articles.remove(n-1);
-							System.out.println(n + "번 게시물이 삭제되었습니다.");
+					for (int p = 1; p <= articles.size(); p++) {
+						Article article3 = articles.get(p - 1);
+						if (n == article3.i) {
+							b = true;
 							break;
-						}else {
-							System.out.println(n + "번 게시물은 존재하지 않습니다.");
+						} else {
+							b = false;
+
 						}
 					}
+				}
+				if (b = true) {
+					for (int p = 1; p <= articles.size(); p++) {
+						Article article3 = articles.get(p - 1);
+						if (n == article3.i) {
+							articles.remove(p - 1);
+							System.out.println(n + "번 게시물이 삭제되었습니다.");
+							break;
+						}
+					}
+				} else {
+					System.out.println(n + "번 게시물은 존재하지 않습니다.");
+
 				}
 			}
 

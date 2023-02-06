@@ -91,6 +91,7 @@ public class Main {
 				Article foundArticle = null;
 				if (articles.size() == 0) {
 					System.out.println(n + "번 게시물은 존재하지 않습니다.");
+					continue;
 				} else {
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article3 = articles.get(p - 1);

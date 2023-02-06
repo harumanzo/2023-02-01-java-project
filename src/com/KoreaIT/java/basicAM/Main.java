@@ -9,13 +9,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+	static List<Article> articles = new ArrayList<>();
 	public static void main(String[] args) {
 		System.out.println("========프로그램 시작========");
 		Scanner sc = new Scanner(System.in);
 		int i = 1;
-		List<Article> articles = new ArrayList<>();
+		
+
+		
+		
+		maketestdata();
+		
+		
 
 		while (true) {
+
 			System.out.printf("명령어 )");
 			String command = sc.nextLine().trim();
 
@@ -154,7 +162,22 @@ public class Main {
 		}
 
 	System.out.println("========프로그램 종료========");sc.close();
-}}
+}
+
+	static void maketestdata() {
+		for(int i =1; i<=3; i++) {
+			Date now = new Date();
+			Date update = new Date();
+			int 조회수 = 0;
+			String command2 = "테스트 제목";
+			String command3 = "테스트 내용";
+			Article article = new Article(i, now, update, 조회수, command2, command3);
+			articles.add(article);
+		System.out.println("테스트 자료 만들어짐.");
+		}
+		
+	}
+}
 
 class Article {
 	int i;
@@ -167,6 +190,7 @@ class Article {
 	public Article(int i, Date now, Date update, int 조회수, String command2, String command3) {
 		this.i = i;
 		this.now = now;
+		this.update = update;
 		this.조회수 = 조회수;
 		this.command2 = command2;
 		this.command3 = command3;
@@ -174,3 +198,6 @@ class Article {
 	}
 
 }
+
+
+

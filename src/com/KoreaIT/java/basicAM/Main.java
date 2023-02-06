@@ -48,7 +48,7 @@ public class Main {
 			else if (command.startsWith("article detail")) {
 				String[] arr = command.split(" ");
 				int n = Integer.parseInt(arr[2]);
-				boolean a = false;
+				Article foundArticle = null;
 
 				if (articles.size() == 0) {
 					System.out.println(n + "번 게시물은 존재하지 않습니다.");
@@ -56,50 +56,45 @@ public class Main {
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article = articles.get(p - 1);
 						if (n == article.i) {
-							a = true;
+							foundArticle = article;
 							break;
-						} else {
-							a = false;
-						}
+						} 
 					}
 				}
-				if (a = true) {
-					for (int p = 1; p <= articles.size(); p++) {
-						Article article = articles.get(p - 1);
-						if (n == article.i) {
-							SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-							System.out.println("번호 : " + article.i);
-							System.out.println("날짜 : " + formatter.format(article.now));
-							System.out.println("제목 : " + article.command2);
-							System.out.println("내용 : " + article.command3);
-							break;
-						}
-					}
-
-				} else {
+				if (foundArticle ==  null) {
 					System.out.println(n + "번 게시물은 존재하지 않습니다.");
-				}
+							continue;
+						}
+				SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM HH:mm:ss");
+				System.out.println("번호 : " + foundArticle.i);
+				System.out.println("날짜 : " + formatter.format(foundArticle.now));
+				System.out.println("제목 : " + foundArticle.command2);
+				System.out.println("내용 : " + foundArticle.command3);
 			}
 
 			else if (command.startsWith("article delete")) {
 				String[] arr = command.split(" ");
 				int n = Integer.parseInt(arr[2]);
-				boolean b = false;
+				Article foundArticle = null;
 				if (articles.size() == 0) {
 					System.out.println(n + "번 게시물은 존재하지 않습니다.");
 				} else {
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article3 = articles.get(p - 1);
 						if (n == article3.i) {
-							b = true;
+							foundArticle = article3;
 							break;
-						} else {
-							b = false;
+						} 
 
 						}
 					}
-				}
-				if (b = true) {
+					if (foundArticle == null) {
+						System.out.println(n + "번 게시물은 존재하지 않습니다.");
+						continue;
+
+							}
+						
+					
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article3 = articles.get(p - 1);
 						if (n == article3.i) {
@@ -107,12 +102,10 @@ public class Main {
 							System.out.println(n + "번 게시물이 삭제되었습니다.");
 							break;
 						}
-					}
-				} else {
-					System.out.println(n + "번 게시물은 존재하지 않습니다.");
 
+					}
 				}
-			}
+			
 
 			else if (command.equals("system exit")) {
 				break;
@@ -124,10 +117,8 @@ public class Main {
 
 		}
 
-		System.out.println("========프로그램 종료========");
-		sc.close();
-	}
-}
+	System.out.println("========프로그램 종료========");sc.close();
+}}
 
 class Article {
 	int i;

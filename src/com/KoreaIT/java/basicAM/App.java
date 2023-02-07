@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class App {
 	static List<Article> articles = new ArrayList<>();
+	static List<Member> members = new ArrayList<>();
 
 	public void run() {
 		System.out.println("========프로그램 시작========");
@@ -27,14 +28,48 @@ public class App {
 					System.out.println("번호 /  제목  /  조회수");
 					for (int i2 = articles.size() - 1; i2 >= 0; i2--) {
 						Article articles2 = articles.get(i2);
-						System.out.println(articles2.i + "   / " + articles2.command2 + "  /  " + articles2.조회수);
+						System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수);
 					}
 				}
+			}
+			
+			else if(command.equals("New member")){
+				int memberid = members.size()+1;
+				Scanner scv = new Scanner(System.in);
+				String nickname = null;
+				while(true) {
+					System.out.printf("아이디 )");
+					
+					nickname = scv.nextLine();
+				}
+
+				String password = null;
+				String password다시 = null;
+				while(true) {
+					System.out.printf("비번 )");
+					password = scv.nextLine();
+					System.out.printf("비번확인 )");
+					password다시 = scv.nextLine();
+					if (password.equals(password다시)==false) {
+						System.out.println("비밀번호가 일치하지 않습니다.");
+						continue;
+					}
+					break;
+				}
+
+
+				System.out.printf("이름 )");
+				String name = scv.nextLine();
+				Date now = new Date();
+				Date update = new Date();				
+				Member member = new Member(memberid, now, update, name, nickname,password);
+				members.add(member);
+				System.out.println("회원가입이 완료되었습니다.");
+				memberid++;
 			}
 
 			else if (command.equals("article write")) {
 				int i = articles.size() + 1;
-				;
 				System.out.printf("제목 )");
 				Scanner scv = new Scanner(System.in);
 				String command2 = scv.nextLine();
@@ -64,7 +99,7 @@ public class App {
 					} else {
 						for (int p = 1; p <= articles.size(); p++) {
 							Article article3 = articles.get(p - 1);
-							if (n == article3.i) {
+							if (n == article3.id) {
 								foundArticle = article3;
 								break;
 							}
@@ -79,7 +114,7 @@ public class App {
 						if (arr[1].equals("detail")) {
 							foundArticle.조회수++;
 							SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM HH:mm:ss");
-							System.out.println("번호 : " + foundArticle.i);
+							System.out.println("번호 : " + foundArticle.id);
 							System.out.println("날짜 : " + formatter.format(foundArticle.now));
 							System.out.println("날짜 : " + formatter.format(foundArticle.update));
 							System.out.println("조회수 : " + foundArticle.조회수);
@@ -89,7 +124,7 @@ public class App {
 						} else if (arr[1].equals("delete")) {
 							for (int p = 1; p <= articles.size(); p++) {
 								Article article3 = articles.get(p - 1);
-								if (n == article3.i) {
+								if (n == article3.id) {
 									articles.remove(p - 1);
 									System.out.println(n + "번 게시물이 삭제되었습니다.");
 									break;

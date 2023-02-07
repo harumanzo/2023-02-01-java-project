@@ -2,16 +2,14 @@ package com.KoreaIT.java.basicAM;
 
 import java.util.Date;
 
-class Article {
-	int i;
-	Date now;
-	Date update;
+class Article extends Dto {
+
 	int 조회수;
 	String command2;
 	String command3;
 
-	public Article(int i, Date now, Date update, int 조회수, String command2, String command3) {
-		this.i = i;
+	public Article(int id, Date now, Date update, int 조회수, String command2, String command3) {
+		this.id = id;
 		this.now = now;
 		this.update = update;
 		this.조회수 = 조회수;

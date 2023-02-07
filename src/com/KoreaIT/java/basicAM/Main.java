@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("========프로그램 시작========");
 		Scanner sc = new Scanner(System.in);
-		int i = 1;
+		
 		
 
 		
@@ -40,6 +40,7 @@ public class Main {
 			}
 
 			else if (command.equals("article write")) {
+				int i = 4;
 				System.out.printf("제목 )");
 				Scanner scv = new Scanner(System.in);
 				String command2 = scv.nextLine();
@@ -166,39 +167,16 @@ public class Main {
 }
 
 	static void maketestdata() {
-		for(int i =1; i<=3; i++) {
-			Date now = new Date();
-			Date update = new Date();
-			int 조회수 = 0;
-			String command2 = "테스트 제목";
-			String command3 = "테스트 내용";
-			Article article = new Article(i, now, update, 조회수, command2, command3);
-			articles.add(article);
+		articles.add(new Article(1, new Date(), new Date(), 0, "테스트", "테스트"));
+		articles.add(new Article(2, new Date(), new Date(), 0, "테스트", "테스트"));
+		articles.add(new Article(3, new Date(), new Date(), 0, "테스트", "테스트"));
 		System.out.println("테스트 자료 만들어짐.");
-		}
+		
 		
 	}
 }
 
-class Article {
-	int i;
-	Date now;
-	Date update;
-	int 조회수;
-	String command2;
-	String command3;
 
-	public Article(int i, Date now, Date update, int 조회수, String command2, String command3) {
-		this.i = i;
-		this.now = now;
-		this.update = update;
-		this.조회수 = 조회수;
-		this.command2 = command2;
-		this.command3 = command3;
-
-	}
-
-}
 
 
 

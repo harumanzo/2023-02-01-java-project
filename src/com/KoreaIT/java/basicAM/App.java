@@ -6,11 +6,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import com.KoreaIT.java.basicAM.dto.Article;
+import com.KoreaIT.java.basicAM.dto.Id;
 import com.KoreaIT.java.basicAM.dto.Member;
 
 public class App {
 	static List<Article> articles = new ArrayList<>();
 	static List<Member> members = new ArrayList<>();
+	static List<Id> ids = new ArrayList<>();
 
 	public void run() {
 		System.out.println("========프로그램 시작========");
@@ -44,8 +46,25 @@ public class App {
 
 				String password다시 = null;
 				while (true) {
-					System.out.printf("아이디 )");
-					nickname = scv.nextLine();
+					while (true) {
+						System.out.printf("아이디 )");
+						nickname = scv.nextLine();
+						if (ids.size() == 0) {
+							break;
+						} else {
+							for (int p = 0; p < ids.size(); p++) {
+								Id id3 = ids.get(p);
+								if ((id3.nickname).equals(nickname)) {
+									System.out.println("중복되는 아이디입니다.");
+									break;
+
+								}
+
+							}
+							continue;
+
+						}
+					}
 
 					System.out.printf("비번 )");
 					password = scv.nextLine();
@@ -64,6 +83,8 @@ public class App {
 				Date update = new Date();
 				Member member = new Member(memberid, now, update, name, nickname, password);
 				members.add(member);
+				Id id = new Id(nickname);
+				ids.add(id);
 				System.out.println("회원가입이 완료되었습니다.");
 				memberid++;
 			}

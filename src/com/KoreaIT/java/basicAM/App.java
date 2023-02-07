@@ -52,10 +52,10 @@ public class App {
 
 			else if (command.startsWith("article")) {
 				String[] arr = command.split(" ");
-				if(arr.length<3) {
+				if (arr.length < 3) {
 					System.out.println("존재하지 않는 명령어입니다");
 					continue;
-				}else {
+				} else {
 					int n = Integer.parseInt(arr[2]);
 					Article foundArticle = null;
 
@@ -107,13 +107,12 @@ public class App {
 							foundArticle.command2 = command2;
 							foundArticle.command3 = command3;
 							foundArticle.update = update;
+							System.out.println(n + "번 게시물이 수정되었습니다.");
 						}
 
 					}
-					
-				}
-			
 
+				}
 
 			}
 
@@ -131,7 +130,7 @@ public class App {
 		sc.close();
 	}
 
-	static void maketestdata() {
+	public static void maketestdata() {
 		articles.add(new Article(1, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(2, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(3, new Date(), new Date(), 0, "테스트", "테스트"));

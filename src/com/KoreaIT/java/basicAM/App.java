@@ -49,30 +49,39 @@ public class App {
 					while (true) {
 						System.out.printf("아이디 )");
 						nickname = scv.nextLine();
+						Id id1 = null;
 						if (ids.size() == 0) {
 							break;
-						} else {
+						}
+						else if (ids.size() != 0) {
 							for (int p = 0; p < ids.size(); p++) {
 								Id id3 = ids.get(p);
 								if ((id3.nickname).equals(nickname)) {
-									System.out.println("중복되는 아이디입니다.");
+									id1 = id3;
 									break;
-
 								}
-
 							}
-							continue;
-
+							if (id1 == null) {
+								break;
+							}else {
+								System.out.println("중복되는 아이디입니다.");
+								continue;
+							}
 						}
+						
+					}
+					while(true) {
+						System.out.printf("비번 )");
+						password = scv.nextLine();
+						System.out.printf("비번확인 )");
+						password다시 = scv.nextLine();
+						if (password.equals(password다시) == false) {
+							System.out.println("비밀번호가 일치하지 않습니다.");
+							continue;
+					}else {
+						break;
 					}
 
-					System.out.printf("비번 )");
-					password = scv.nextLine();
-					System.out.printf("비번확인 )");
-					password다시 = scv.nextLine();
-					if (password.equals(password다시) == false) {
-						System.out.println("비밀번호가 일치하지 않습니다.");
-						continue;
 					}
 					break;
 				}

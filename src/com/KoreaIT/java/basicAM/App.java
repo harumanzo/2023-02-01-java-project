@@ -51,9 +51,13 @@ public class App {
 						nickname = scv.nextLine();
 						Id id1 = null;
 						if (ids.size() == 0) {
-							break;
-						}
-						else if (ids.size() != 0) {
+							if (nickname.length() < 5) {
+								System.out.println("아이디는 다섯글자 이상이어야 합니다.");
+								continue;
+							} else {
+								break;
+							}
+						} else if (ids.size() != 0) {
 							for (int p = 0; p < ids.size(); p++) {
 								Id id3 = ids.get(p);
 								if ((id3.nickname).equals(nickname)) {
@@ -62,15 +66,20 @@ public class App {
 								}
 							}
 							if (id1 == null) {
-								break;
-							}else {
+								if (nickname.length() < 5) {
+									System.out.println("아이디는 다섯글자 이상이어야 합니다.");
+									continue;
+								} else {
+									break;
+								}
+							} else {
 								System.out.println("중복되는 아이디입니다.");
 								continue;
 							}
 						}
-						
+
 					}
-					while(true) {
+					while (true) {
 						System.out.printf("비번 )");
 						password = scv.nextLine();
 						System.out.printf("비번확인 )");
@@ -78,9 +87,9 @@ public class App {
 						if (password.equals(password다시) == false) {
 							System.out.println("비밀번호가 일치하지 않습니다.");
 							continue;
-					}else {
-						break;
-					}
+						} else {
+							break;
+						}
 
 					}
 					break;

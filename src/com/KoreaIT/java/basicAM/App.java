@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import com.KoreaIT.java.basicAM.dto.Article;
+import com.KoreaIT.java.basicAM.dto.Member;
 
 public class App {
 	static List<Article> articles = new ArrayList<>();
@@ -32,37 +34,35 @@ public class App {
 					}
 				}
 			}
-			
-			else if(command.equals("New member")){
-				int memberid = members.size()+1;
+
+			else if (command.equals("New member")) {
+				int memberid = members.size() + 1;
 				Scanner scv = new Scanner(System.in);
 				String nickname = null;
-				while(true) {
-					System.out.printf("아이디 )");
-					
-					nickname = scv.nextLine();
-				}
 
 				String password = null;
+
 				String password다시 = null;
-				while(true) {
+				while (true) {
+					System.out.printf("아이디 )");
+					nickname = scv.nextLine();
+
 					System.out.printf("비번 )");
 					password = scv.nextLine();
 					System.out.printf("비번확인 )");
 					password다시 = scv.nextLine();
-					if (password.equals(password다시)==false) {
+					if (password.equals(password다시) == false) {
 						System.out.println("비밀번호가 일치하지 않습니다.");
 						continue;
 					}
 					break;
 				}
 
-
 				System.out.printf("이름 )");
 				String name = scv.nextLine();
 				Date now = new Date();
-				Date update = new Date();				
-				Member member = new Member(memberid, now, update, name, nickname,password);
+				Date update = new Date();
+				Member member = new Member(memberid, now, update, name, nickname, password);
 				members.add(member);
 				System.out.println("회원가입이 완료되었습니다.");
 				memberid++;

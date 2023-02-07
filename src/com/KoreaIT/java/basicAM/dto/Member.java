@@ -1,11 +1,11 @@
-package com.KoreaIT.java.basicAM;
+package com.KoreaIT.java.basicAM.dto;
 import java.util.Date;
 
 public class Member extends Dto {
 
-	String membername;
-	String memberpassword;
-	String name;
+	public String membername;
+	public String memberpassword;
+	public String name;
 	
 	
 	public Member(int id, Date now, Date update, String name, String membername, String memberpassword){

@@ -1,12 +1,12 @@
-package com.KoreaIT.java.basicAM;
+package com.KoreaIT.java.basicAM.dto;
 
 import java.util.Date;
 
-class Article extends Dto {
+public class Article extends Dto {
 
-	int 조회수;
-	String command2;
-	String command3;
+	public int 조회수;
+	public String command2;
+	public String command3;
 
 	public Article(int id, Date now, Date update, int 조회수, String command2, String command3) {
 		this.id = id;

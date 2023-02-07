@@ -40,7 +40,7 @@ public class Main {
 			}
 
 			else if (command.equals("article write")) {
-				int i = 4;
+				int i = articles.size() + 1;;
 				System.out.printf("제목 )");
 				Scanner scv = new Scanner(System.in);
 				String command2 = scv.nextLine();

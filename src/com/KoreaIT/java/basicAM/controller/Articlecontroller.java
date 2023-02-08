@@ -8,8 +8,11 @@ import java.util.Scanner;
 
 import com.KoreaIT.java.basicAM.dto.Article;
 
-public class Articlecontroller {
+public class Articlecontroller extends Controller {
 	static List<Article> articles = new ArrayList<>();
+	
+	private String command;
+	private String actionMethodName;
 	
 	public static void maketestdata() {
 		articles.add(new Article(1, new Date(), new Date(), 0, "테스트", "테스트"));
@@ -17,6 +20,23 @@ public class Articlecontroller {
 		articles.add(new Article(3, new Date(), new Date(), 0, "테스트", "테스트"));
 		System.out.println("테스트 자료 만들어짐.");
 		
+	}
+	
+	public void doAction(String command, String actionMethodName) {
+		this.command = command;
+		this.actionMethodName = actionMethodName;
+		
+		switch (actionMethodName) {
+		case "list":
+			dolist();
+			break;
+		}
+		
+		switch (actionMethodName) {
+		case "write":
+			dowrite();
+			break;
+		}
 	}
 	
 	public void dolist() {

@@ -8,17 +8,30 @@ import java.util.Scanner;
 import com.KoreaIT.java.basicAM.dto.Id;
 import com.KoreaIT.java.basicAM.dto.Member;
 
-public class Membercontroller {
+public class Membercontroller extends Controller{
 	static List<Id> ids = new ArrayList<>();
 	private List<Member> members;
 	private Scanner sc;
+	private String command;
+	private String actionMethodName;
 
 	public Membercontroller(List<Member> members, Scanner sc) {
 		this.members = members;
 		this.sc = sc;
 	}
+	
+	public void doAction(String command, String actionMethodName) {
+		this.command = command;
+		this.actionMethodName = actionMethodName;
+		
+		switch (actionMethodName) {
+		case "join":
+			dojoin();
+			break;
+		}
+	}
 
-	public void dojoin(Scanner sc) {
+	public void dojoin() {
 		int memberid = members.size() + 1;
 		Scanner scv = new Scanner(System.in);
 		String nickname = null;

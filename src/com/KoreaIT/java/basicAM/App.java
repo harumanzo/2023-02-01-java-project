@@ -1,12 +1,11 @@
 package com.KoreaIT.java.basicAM;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import com.KoreaIT.java.basicAM.controller.Articlecontroller;
+import com.KoreaIT.java.basicAM.controller.Controller;
 import com.KoreaIT.java.basicAM.controller.Membercontroller;
 import com.KoreaIT.java.basicAM.dto.Article;
 import com.KoreaIT.java.basicAM.dto.Id;
@@ -30,30 +29,40 @@ public class App {
 			System.out.printf("명령어 )");
 			String command = sc.nextLine().trim();
 
-			if (command.equals("member join")) {
-				membercontroller.dojoin(sc);
+			if (command.length() == 0) {
+				System.out.println("명령어를 입력해주세요");
+				continue;
 			}
 
-			else if (command.equals("article list")) {
-				articlecontroller.dolist();
+			String[] commandBits = command.split(" "); // article detail 1 / member join
 
-			} else if (command.equals("article write")) {
-				articlecontroller.dowrite();
-
+			if (commandBits.length == 1) {
+				System.out.println("명령어 확인 후 다시 입력해주세요");
+				continue;
 			}
 
-			else if (command.startsWith("article")) {
-				articlecontroller.dosomething(command);
+			String controllerName = commandBits[0];
+			String actionMethodName = commandBits[1];
+
+			Controller controller = null;
+
+			if (controllerName.equals("article")) {
+				controller = articlecontroller;
+			} else if (controllerName.equals("member")) {
+				controller = membercontroller;
+			} else {
+				if (controllerName.equals("system")) {
+					if (actionMethodName.equals("exit")) {
+						break;
+					}
+
+				} else {
+					System.out.println("존재하지 않는 명령어 입니다.");
+					continue;
+				}
 
 			}
-
-			else if (command.equals("system exit")) {
-				break;
-			}
-
-			else {
-				System.out.println("존재하지 않는 명령어입니다");
-			}
+			controller.doAction(command, actionMethodName);
 
 		}
 

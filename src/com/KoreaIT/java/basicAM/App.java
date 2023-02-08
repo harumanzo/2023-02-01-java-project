@@ -20,7 +20,7 @@ public class App {
 	public void run() {
 		System.out.println("========프로그램 시작========");
 		Scanner sc = new Scanner(System.in);
-		Membercontroller membercontroller = new Membercontroller(members,sc);
+		Membercontroller membercontroller = new Membercontroller(members, sc);
 		Articlecontroller articlecontroller = new Articlecontroller();
 
 		Articlecontroller.maketestdata();
@@ -29,22 +29,21 @@ public class App {
 
 			System.out.printf("명령어 )");
 			String command = sc.nextLine().trim();
-			
-			if(command.equals("member join") ) {
+
+			if (command.equals("member join")) {
 				membercontroller.dojoin(sc);
 			}
 
 			else if (command.equals("article list")) {
-				articlecontroller.dolist(sc);
-				
-			}			
-			else if (command.equals("article write")) {
-				articlecontroller.dowrite(sc);
-				
+				articlecontroller.dolist();
+
+			} else if (command.equals("article write")) {
+				articlecontroller.dowrite();
+
 			}
 
 			else if (command.startsWith("article")) {
-				articlecontroller.dosomething(command);	
+				articlecontroller.dosomething(command);
 
 			}
 
@@ -61,6 +60,5 @@ public class App {
 		System.out.println("========프로그램 종료========");
 		sc.close();
 	}
-
 
 }

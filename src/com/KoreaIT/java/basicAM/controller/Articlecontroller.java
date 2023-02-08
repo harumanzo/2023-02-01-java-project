@@ -19,7 +19,7 @@ public class Articlecontroller {
 		
 	}
 	
-	public void dolist(Scanner sc) {
+	public void dolist() {
 		if (articles.size() == 0) {
 			System.out.println("게시글이 없습니다.");
 		} else {
@@ -32,7 +32,7 @@ public class Articlecontroller {
 		
 	}
 
-	public void dowrite(Scanner sc) {
+	public void dowrite() {
 		int i = articles.size() + 1;
 		System.out.printf("제목 )");
 		Scanner scv = new Scanner(System.in);

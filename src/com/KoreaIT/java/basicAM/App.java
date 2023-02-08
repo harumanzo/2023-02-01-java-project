@@ -48,7 +48,7 @@ public class App {
 				while (true) {
 					while (true) {
 						System.out.printf("아이디 )");
-						nickname = scv.nextLine();
+						nickname = scv.nextLine().trim();
 						Id id1 = null;
 						if (ids.size() == 0) {
 							if (nickname.length() < 5) {

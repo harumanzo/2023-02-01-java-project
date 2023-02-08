@@ -37,6 +37,24 @@ public class Articlecontroller extends Controller {
 			dowrite();
 			break;
 		}
+		
+		switch (actionMethodName) {
+		case "delete":
+			dosomething(command);
+			break;
+		}
+		
+		switch (actionMethodName) {
+		case "detail":
+			dosomething(command);
+			break;
+		}
+		
+		switch (actionMethodName) {
+		case "modify":
+			dosomething(command);
+			break;
+		}
 	}
 	
 	public void dolist() {

@@ -44,8 +44,7 @@ public class App {
 			}
 
 			else if (command.startsWith("article")) {
-				articlecontroller.dosomething(command);
-				
+				articlecontroller.dosomething(command);	
 
 			}
 

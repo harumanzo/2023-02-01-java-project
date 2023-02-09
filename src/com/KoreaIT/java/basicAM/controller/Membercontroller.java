@@ -55,10 +55,16 @@ public class Membercontroller extends Controller {
 		case "detail":
 			doadminsomething(command);
 			break;
+			
+		case "list":
+			doadminsomething(command);
+			break;
 
 		case "modify":
 			dosomething(command);
 			break;
+			
+
 		}
 
 	}
@@ -244,7 +250,20 @@ public class Membercontroller extends Controller {
 		String[] arr = command.split(" ");
 
 		if (arr.length < 3) {
-			System.out.println("존재하지 않는 명령어입니다");
+			if (arr[1].equals("list")) {
+				if (members.size() == 0) {
+					System.out.println("회원이 없습니다.");
+				} else {
+					System.out.println("회원번호 /  이름  /  아이디  /  게시글수");
+					for (int i2 = members.size() - 1; i2 >= 0; i2--) {
+						Member members2 = members.get(i2);
+						System.out.println(members2.id + "   / " + members2.name + "  /  " + members2.membername +"  /  " +members2.id);
+					}
+				}
+			}else {
+				System.out.println("존재하지 않는 명령어입니다");
+				return;
+			}			
 		} else {
 			int n = Integer.parseInt(arr[2]);
 			Member foundMember = null;
@@ -317,8 +336,19 @@ public class Membercontroller extends Controller {
 				System.out.printf("바꾸실 이름 )");
 				Scanner scv = new Scanner(System.in);
 				String newname = scv.nextLine();
-				System.out.printf("바꾸실 비밀번호 )");
-				String newpassword = scv.nextLine();
+				String newpassword = null;
+				String newpasswordconfirm = null;
+				while(true) {
+					System.out.printf("바꾸실 비밀번호 )");
+					newpassword = scv.nextLine();
+					System.out.printf("바꾸실 비밀번호 확인 )");
+					newpasswordconfirm = scv.nextLine();
+					if (newpassword.equals(newpasswordconfirm)) {
+						System.out.println("비밀번호가 일치하지 않습니다.");
+						continue;
+					}
+					break;
+				}
 				Date update = new Date();
 
 				foundMember.name = newname;

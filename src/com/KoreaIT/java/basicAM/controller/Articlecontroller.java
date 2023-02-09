@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import com.KoreaIT.java.basicAM.dto.Article;
 import com.KoreaIT.java.basicAM.dto.Member;
+import com.KoreaIT.java.basicAM.controller.Membercontroller;
 
 public class Articlecontroller extends Controller {
 	static List<Article> articles = new ArrayList<>();
@@ -64,7 +65,8 @@ public class Articlecontroller extends Controller {
 	}
 
 	public void dowrite() {
-		int i = articles.size() + 1;
+		Article article1 = articles.get(articles.size()-1);
+		int i = article1.id + 1;
 		System.out.printf("제목 )");
 		Scanner scv = new Scanner(System.in);
 		String command2 = scv.nextLine();

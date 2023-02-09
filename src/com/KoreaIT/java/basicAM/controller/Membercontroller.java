@@ -378,6 +378,7 @@ public class Membercontroller extends Controller {
 					if (loginedmember.membername.equals(member3.membername)) {
 						members.remove(p);
 						System.out.println("회원이 삭제되었습니다.");
+						System.out.println("안녕히 가십시오");
 						break;
 					}
 

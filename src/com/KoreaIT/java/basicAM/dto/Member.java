@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Member extends Dto {
 
-	public String membername;
+	
 	public String memberpassword;
 	
 	

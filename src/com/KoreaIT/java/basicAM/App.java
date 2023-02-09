@@ -8,13 +8,11 @@ import com.KoreaIT.java.basicAM.controller.Articlecontroller;
 import com.KoreaIT.java.basicAM.controller.Controller;
 import com.KoreaIT.java.basicAM.controller.Membercontroller;
 import com.KoreaIT.java.basicAM.dto.Article;
-import com.KoreaIT.java.basicAM.dto.Id;
 import com.KoreaIT.java.basicAM.dto.Member;
 
 public class App {
 	static List<Article> articles = new ArrayList<>();
 	static List<Member> members = new ArrayList<>();
-	static List<Id> ids = new ArrayList<>();
 
 	public void run() {
 		System.out.println("========프로그램 시작========");
@@ -23,7 +21,9 @@ public class App {
 		Articlecontroller articlecontroller = new Articlecontroller();
 
 		Articlecontroller.maketestdata();
+		Membercontroller.makeadminaccount();
 		Membercontroller.maketestdata();
+		
 
 		while (true) {
 

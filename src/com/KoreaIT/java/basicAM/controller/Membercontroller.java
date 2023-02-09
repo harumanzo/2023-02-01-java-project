@@ -5,11 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import com.KoreaIT.java.basicAM.dto.Id;
+
 import com.KoreaIT.java.basicAM.dto.Member;
 
 public class Membercontroller extends Controller {
-	static List<Id> ids = new ArrayList<>();
 	private static List<Member> members;
 	private Scanner sc;
 	private String command;
@@ -26,6 +25,10 @@ public class Membercontroller extends Controller {
 		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234"));
 		members.add(new Member(3, new Date(), new Date(), "홍학범", "naming", "1234"));
 		System.out.println("테스트 회원 만들어짐.");
+	}
+	
+	public static void makeadminaccount() {
+		members.add(new Member(0, new Date(), new Date(), "관리자", "admin", "admin1234"));
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -44,6 +47,10 @@ public class Membercontroller extends Controller {
 		case "logout":
 			dologout();
 			break;
+			
+		case "delete":
+			domemberdelete();
+			break;
 		}
 
 	}
@@ -56,11 +63,12 @@ public class Membercontroller extends Controller {
 		String password = null;
 
 		String password다시 = null;
+		String name = null;
 		while (true) {
 			while (true) {
 				System.out.printf("아이디 )");
 				nickname = scv.nextLine().trim();
-				Id id1 = null;
+				Member member1 = null;
 				if (members.size() == 0) {
 					if (nickname.length() < 5) {
 						System.out.println("아이디는 다섯글자 이상이어야 합니다.");
@@ -68,15 +76,15 @@ public class Membercontroller extends Controller {
 					} else {
 						break;
 					}
-				} else if (ids.size() != 0) {
-					for (int p = 0; p < ids.size(); p++) {
-						Id id3 = ids.get(p);
-						if ((id3.nickname).equals(nickname)) {
-							id1 = id3;
+				} else if (members.size() != 0) {
+					for (int p = 0; p < members.size(); p++) {
+						Member member2 = members.get(p);
+						if ((member2.membername).equals(nickname)) {
+							member1 = member2;
 							break;
 						}
 					}
-					if (id1 == null) {
+					if (member1 == null) {
 						if (nickname.length() < 5) {
 							System.out.println("아이디는 다섯글자 이상이어야 합니다.");
 							continue;
@@ -106,14 +114,22 @@ public class Membercontroller extends Controller {
 			break;
 		}
 
-		System.out.printf("이름 )");
-		String name = scv.nextLine();
+		
+		
+		while (true) {
+			System.out.printf("이름 )");
+			name = scv.nextLine();
+			if(name.equals("관리자")) {
+				System.out.println("사용 할 수 없는 이름입니다.");
+				continue;
+			}else {
+				break;
+			}	
+		}
 		Date now = new Date();
 		Date update = new Date();
 		Member member = new Member(memberid, now, update, name, nickname, password);
 		members.add(member);
-		Id id = new Id(nickname);
-		ids.add(id);
 		System.out.println("회원가입이 완료되었습니다.");
 		memberid++;
 	}
@@ -201,10 +217,24 @@ public class Membercontroller extends Controller {
 		if (loginedmember != null) {
 			System.out.printf("%s님 잘가십시오.\n", loginedmember.name);
 			loginedmember = null;
+			return;
 		} else {
 			System.out.println("로그인을 해주십시오");
 		}
 
 	}
+	
+	public void domemberdelete() {
+		if(loginedmember == null) {
+			System.out.println("권한이 없습니다!!!");
+			return;
+		}else if(loginedmember.name.equals("admin")) {
+			System.out.println("권한이 있습니다!!!");
+		}else {
+			System.out.println("권한이 없습니다!!!");
+		}
+	}
+	
+	
 
 }

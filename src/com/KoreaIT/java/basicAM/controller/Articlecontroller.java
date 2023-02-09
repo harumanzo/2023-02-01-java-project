@@ -17,9 +17,9 @@ public class Articlecontroller extends Controller {
 	private String actionMethodName;
 	
 	public static void maketestdata() {
-		articles.add(new Article(1, new Date(), new Date(), 0, "홍길동" , "테스트", "테스트"));
-		articles.add(new Article(2, new Date(), new Date(), 0, "홍길순","테스트", "테스트"));
-		articles.add(new Article(3, new Date(), new Date(), 0, "홍학범","테스트", "테스트"));
+		articles.add(new Article(1, new Date(), new Date(), 0, "홍길동" , "action", "테스트", "테스트"));
+		articles.add(new Article(2, new Date(), new Date(), 0, "홍길순", "method","테스트", "테스트"));
+		articles.add(new Article(3, new Date(), new Date(), 0, "홍학범", "naming","테스트", "테스트"));
 		System.out.println("테스트 게시글 만들어짐.");
 
 	}
@@ -82,7 +82,7 @@ public class Articlecontroller extends Controller {
 		
 		
 
-		Article article = new Article(i, now, update, 조회수,loginedmember.name, command2, command3);
+		Article article = new Article(i, now, update, 조회수,loginedmember.name,loginedmember.membername, command2, command3);
 		articles.add(article);
 		System.out.println(i + "번글이 생성되었습니다");
 
@@ -130,6 +130,8 @@ public class Articlecontroller extends Controller {
 					}else {
 						if(loginedmember.name.equals(foundArticle.name)) {
 							
+						}else if(loginedmember.membername.equals("admin")){
+							
 						}else {
 							System.out.println("작성자 본인이 아닙니다!!!");
 							return;
@@ -149,9 +151,12 @@ public class Articlecontroller extends Controller {
 						System.out.println("로그인 후 이용해주십시오");
 						return;
 					}else {
-						if(loginedmember.name.equals(foundArticle.name)) {
+						if(loginedmember.membername.equals(foundArticle.membername)) {
 							
-						}else {
+						}else if(loginedmember.membername.equals("admin")){
+							
+						}
+						else {
 							System.out.println("작성자 본인이 아닙니다!!!");
 							return;
 						}

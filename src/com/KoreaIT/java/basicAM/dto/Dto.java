@@ -7,4 +7,5 @@ public class Dto {
 	public Date now;
 	public Date update;
 	public String name;
+	public String membername;
 }

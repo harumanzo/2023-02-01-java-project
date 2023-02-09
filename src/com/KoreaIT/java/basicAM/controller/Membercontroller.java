@@ -14,12 +14,13 @@ public class Membercontroller extends Controller {
 	private Scanner sc;
 	private String command;
 	private String actionMethodName;
+	private Member loginedmember;
 
 	public Membercontroller(List<Member> members, Scanner sc) {
 		this.members = members;
 		this.sc = sc;
 	}
-	
+
 	public static void maketestdata() {
 		members.add(new Member(1, new Date(), new Date(), "홍길동", "action", "1234"));
 		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234"));
@@ -36,12 +37,15 @@ public class Membercontroller extends Controller {
 			dojoin();
 			break;
 
-		}
-		switch (actionMethodName) {
 		case "login":
 			dologin();
 			break;
+
+		case "logout":
+			dologout();
+			break;
 		}
+
 	}
 
 	public void dojoin() {
@@ -57,7 +61,7 @@ public class Membercontroller extends Controller {
 				System.out.printf("아이디 )");
 				nickname = scv.nextLine().trim();
 				Id id1 = null;
-				if (ids.size() == 0) {
+				if (members.size() == 0) {
 					if (nickname.length() < 5) {
 						System.out.println("아이디는 다섯글자 이상이어야 합니다.");
 						continue;
@@ -121,6 +125,7 @@ public class Membercontroller extends Controller {
 		String password = null;
 
 		while (true) {
+
 			while (true) {
 				System.out.printf("아이디 )");
 				nickname = scv.nextLine().trim();
@@ -138,21 +143,21 @@ public class Membercontroller extends Controller {
 
 					}
 				}
-				if(member1 == null) {
+				if (member1 == null) {
 					System.out.println("유호하지 않은 아이디입니다.");
 					continue;
-				}else {
+				} else {
 					break;
 				}
 			}
-			while(true) {
+			while (true) {
 				if (members.size() == 0) {
 					break;
 				}
 				System.out.printf("비밀번호 )");
 				password = scv.nextLine().trim();
 				Member member1 = null;
-				if (members.size()!=0) {
+				if (members.size() != 0) {
 					for (int p = 0; p < members.size(); p++) {
 						Member members3 = members.get(p);
 						if ((members3.membername).equals(nickname)) {
@@ -162,13 +167,29 @@ public class Membercontroller extends Controller {
 
 					}
 				}
-				
-				if(member1.memberpassword.equals(password)) {
-					System.out.println("로그인이 완료되었습니다.");
-					break;
-				}else {
-					System.out.println("잘못된 비밀번호입니다.");
-					continue;
+				if (loginedmember != null) {
+					if (loginedmember.membername.equals(nickname)) {
+						System.out.println("이미 로그인된 아이디입니다");
+						break;
+					} else if (member1.memberpassword.equals(password)) {
+						System.out.println("로그인이 완료되었습니다.");
+						loginedmember = member1;
+						System.out.printf("%s님 환영합니다.\n", loginedmember.name);
+						break;
+					} else {
+						System.out.println("잘못된 비밀번호입니다.");
+						continue;
+					}
+				} else {
+					if (member1.memberpassword.equals(password)) {
+						System.out.println("로그인이 완료되었습니다.");
+						loginedmember = member1;
+						System.out.printf("%s님 환영합니다.\n", loginedmember.name);
+						break;
+					} else {
+						System.out.println("잘못된 비밀번호입니다.");
+						continue;
+					}
 				}
 
 			}
@@ -176,5 +197,14 @@ public class Membercontroller extends Controller {
 		}
 	}
 
+	public void dologout() {
+		if (loginedmember != null) {
+			System.out.printf("%s님 잘가십시오.\n", loginedmember.name);
+			loginedmember = null;
+		} else {
+			System.out.println("로그인을 해주십시오");
+		}
+
+	}
 
 }

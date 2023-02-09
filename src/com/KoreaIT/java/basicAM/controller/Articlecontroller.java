@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.KoreaIT.java.basicAM.dto.Article;
+import com.KoreaIT.java.basicAM.dto.Member;
 
 public class Articlecontroller extends Controller {
 	static List<Article> articles = new ArrayList<>();
 
 	private String command;
 	private String actionMethodName;
-
+	
 	public static void maketestdata() {
 		articles.add(new Article(1, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(2, new Date(), new Date(), 0, "테스트", "테스트"));
@@ -72,11 +73,12 @@ public class Articlecontroller extends Controller {
 		Date now = new Date();
 		Date update = new Date();
 		int 조회수 = 0;
+		
+		
 
 		Article article = new Article(i, now, update, 조회수, command2, command3);
 		articles.add(article);
 		System.out.println(i + "번글이 생성되었습니다");
-		i++;
 
 	}
 

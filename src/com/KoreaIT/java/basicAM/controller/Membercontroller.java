@@ -63,6 +63,10 @@ public class Membercontroller extends Controller {
 		case "modify":
 			dosomething(command);
 			break;
+		
+		case "withdraw":
+			dosomething(command);
+			break;
 			
 
 		}
@@ -297,7 +301,7 @@ public class Membercontroller extends Controller {
 					for (int p = 0; p <= members.size(); p++) {
 						Member member3 = members.get(p);
 						if (n == member3.id) {
-							members.remove(p - 1);
+							members.remove(p);
 							System.out.println(n + "번 회원이 삭제되었습니다.");
 							break;
 						}
@@ -356,6 +360,28 @@ public class Membercontroller extends Controller {
 				foundMember.memberpassword = newpassword;
 				foundMember.update = update;
 				System.out.println("회원님의 정보가 수정되었습니다.");
+			}
+			
+			if (arr[1].equals("mypage")) {
+				SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM HH:mm:ss");
+				System.out.println("회원번호 : " + foundMember.id);
+				System.out.println("가입날짜 : " + formatter.format(foundMember.now));
+				System.out.println("정보 수정날짜 : " + formatter.format(foundMember.update));
+				System.out.println("회원이름 : " + foundMember.name);
+				System.out.println("회원 아이디 : " + foundMember.membername);
+				System.out.println("회원 비밀번호 : " + foundMember.memberpassword);
+				System.out.println("작성 게시글 수 : " + foundMember.memberwrite);
+
+			} else if (arr[1].equals("withdraw")) {
+				for (int p = 0; p <= members.size(); p++) {
+					Member member3 = members.get(p);
+					if (loginedmember.membername.equals(member3.membername)) {
+						members.remove(p);
+						System.out.println("회원이 삭제되었습니다.");
+						break;
+					}
+
+				}
 			}
 
 		}

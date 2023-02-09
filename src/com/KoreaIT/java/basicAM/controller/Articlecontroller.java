@@ -55,10 +55,10 @@ public class Articlecontroller extends Controller {
 		if (articles.size() == 0) {
 			System.out.println("게시글이 없습니다.");
 		} else {
-			System.out.println("번호 /  제목  /  조회수");
+			System.out.println("번호 /  제목  /  조회수  /  작성자");
 			for (int i2 = articles.size() - 1; i2 >= 0; i2--) {
 				Article articles2 = articles.get(i2);
-				System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수);
+				System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수 +"  /  " +articles2.name);
 			}
 		}
 
@@ -127,6 +127,13 @@ public class Articlecontroller extends Controller {
 					if(loginedmember == null) {
 						System.out.println("로그인 후 이용해주십시오");
 						return;
+					}else {
+						if(loginedmember.name.equals(foundArticle.name)) {
+							
+						}else {
+							System.out.println("작성자 본인이 아닙니다!!!");
+							return;
+						}
 					}
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article3 = articles.get(p - 1);
@@ -141,6 +148,13 @@ public class Articlecontroller extends Controller {
 					if(loginedmember == null) {
 						System.out.println("로그인 후 이용해주십시오");
 						return;
+					}else {
+						if(loginedmember.name.equals(foundArticle.name)) {
+							
+						}else {
+							System.out.println("작성자 본인이 아닙니다!!!");
+							return;
+						}
 					}
 					System.out.printf("제목 )");
 					Scanner scv = new Scanner(System.in);

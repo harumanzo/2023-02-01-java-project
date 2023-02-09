@@ -84,6 +84,7 @@ public class Articlecontroller extends Controller {
 
 		Article article = new Article(i, now, update, 조회수,loginedmember.name,loginedmember.membername, command2, command3);
 		articles.add(article);
+		loginedmember.memberwrite ++;
 		System.out.println(i + "번글이 생성되었습니다");
 
 	}

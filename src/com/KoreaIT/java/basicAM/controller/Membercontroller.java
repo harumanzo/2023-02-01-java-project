@@ -21,14 +21,14 @@ public class Membercontroller extends Controller {
 	}
 
 	public static void maketestdata() {
-		members.add(new Member(1, new Date(), new Date(), "홍길동", "action", "1234"));
-		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234"));
-		members.add(new Member(3, new Date(), new Date(), "홍학범", "naming", "1234"));
+		members.add(new Member(1, new Date(), new Date(), "홍길동", "action", "1234",1));
+		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234",1));
+		members.add(new Member(3, new Date(), new Date(), "홍학범", "naming", "1234",1));
 		System.out.println("테스트 회원 만들어짐.");
 	}
 
 	public static void makeadminaccount() {
-		members.add(new Member(0, new Date(), new Date(), "관리자", "admin", "admin1234"));
+		members.add(new Member(0, new Date(), new Date(), "관리자", "admin", "admin1234",0));
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -140,7 +140,7 @@ public class Membercontroller extends Controller {
 		}
 		Date now = new Date();
 		Date update = new Date();
-		Member member = new Member(memberid, now, update, name, nickname, password);
+		Member member = new Member(memberid, now, update, name, nickname, password, 0);
 		members.add(member);
 		System.out.println("회원가입이 완료되었습니다.");
 		memberid++;
@@ -257,7 +257,7 @@ public class Membercontroller extends Controller {
 					System.out.println("회원번호 /  이름  /  아이디  /  게시글수");
 					for (int i2 = members.size() - 1; i2 >= 0; i2--) {
 						Member members2 = members.get(i2);
-						System.out.println(members2.id + "   / " + members2.name + "  /  " + members2.membername +"  /  " +members2.id);
+						System.out.println(members2.id + "   / " + members2.name + "  /  " + members2.membername +"  /  " +members2.memberwrite);
 					}
 				}
 			}else {
@@ -291,6 +291,7 @@ public class Membercontroller extends Controller {
 					System.out.println("회원이름 : " + foundMember.name);
 					System.out.println("회원 아이디 : " + foundMember.membername);
 					System.out.println("회원 비밀번호 : " + foundMember.memberpassword);
+					System.out.println("작성 게시글 수 : " + foundMember.memberwrite);
 
 				} else if (arr[1].equals("delete")) {
 					for (int p = 0; p <= members.size(); p++) {

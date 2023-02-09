@@ -18,7 +18,7 @@ public class Articlecontroller extends Controller {
 		articles.add(new Article(1, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(2, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(3, new Date(), new Date(), 0, "테스트", "테스트"));
-		System.out.println("테스트 자료 만들어짐.");
+		System.out.println("테스트 게시글 만들어짐.");
 
 	}
 

@@ -23,6 +23,7 @@ public class App {
 		Articlecontroller articlecontroller = new Articlecontroller();
 
 		Articlecontroller.maketestdata();
+		Membercontroller.maketestdata();
 
 		while (true) {
 

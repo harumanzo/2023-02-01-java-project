@@ -10,7 +10,7 @@ import com.KoreaIT.java.basicAM.dto.Member;
 
 public class Membercontroller extends Controller {
 	static List<Id> ids = new ArrayList<>();
-	private List<Member> members;
+	private static List<Member> members;
 	private Scanner sc;
 	private String command;
 	private String actionMethodName;
@@ -18,6 +18,13 @@ public class Membercontroller extends Controller {
 	public Membercontroller(List<Member> members, Scanner sc) {
 		this.members = members;
 		this.sc = sc;
+	}
+	
+	public static void maketestdata() {
+		members.add(new Member(1, new Date(), new Date(), "홍길동", "action", "1234"));
+		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234"));
+		members.add(new Member(3, new Date(), new Date(), "홍학범", "naming", "1234"));
+		System.out.println("테스트 회원 만들어짐.");
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -113,17 +120,16 @@ public class Membercontroller extends Controller {
 
 		String password = null;
 
-		String password다시 = null;
 		while (true) {
 			while (true) {
 				System.out.printf("아이디 )");
 				nickname = scv.nextLine().trim();
 				Member member1 = null;
-				if (ids.size() == 0) {
+				if (members.size() == 0) {
 					System.out.println("유효하지 않은 아이디입니다.");
 					break;
 				} else {
-					for (int p = 0; p < ids.size(); p++) {
+					for (int p = 0; p < members.size(); p++) {
 						Member members3 = members.get(p);
 						if ((members3.membername).equals(nickname)) {
 							member1 = members3;
@@ -140,14 +146,14 @@ public class Membercontroller extends Controller {
 				}
 			}
 			while(true) {
-				if (ids.size() == 0) {
+				if (members.size() == 0) {
 					break;
 				}
 				System.out.printf("비밀번호 )");
 				password = scv.nextLine().trim();
 				Member member1 = null;
 				if (members.size()!=0) {
-					for (int p = 0; p < ids.size(); p++) {
+					for (int p = 0; p < members.size(); p++) {
 						Member members3 = members.get(p);
 						if ((members3.membername).equals(nickname)) {
 							member1 = members3;
@@ -157,11 +163,11 @@ public class Membercontroller extends Controller {
 					}
 				}
 				
-				if(member1.memberpassword == password) {
+				if(member1.memberpassword.equals(password)) {
 					System.out.println("로그인이 완료되었습니다.");
 					break;
 				}else {
-					System.out.println(type(member1.memberpassword));
+					System.out.println("잘못된 비밀번호입니다.");
 					continue;
 				}
 
@@ -170,8 +176,5 @@ public class Membercontroller extends Controller {
 		}
 	}
 
-	private char[] type(String memberpassword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

@@ -14,7 +14,7 @@ public class Membercontroller extends Controller {
 	private Scanner sc;
 	private String command;
 	private String actionMethodName;
-	private Member loginedmember;
+	
 
 	public Membercontroller(List<Member> members, Scanner sc) {
 		this.members = members;

@@ -5,7 +5,6 @@ public class Member extends Dto {
 
 	public String membername;
 	public String memberpassword;
-	public String name;
 	
 	
 	public Member(int id, Date now, Date update, String name, String membername, String memberpassword){

@@ -54,6 +54,9 @@ public class App {
 				if (controllerName.equals("system")) {
 					if (actionMethodName.equals("exit")) {
 						break;
+					}else {
+						System.out.println("존재하지 않는 명령어 입니다.");
+						continue;
 					}
 
 				} else {

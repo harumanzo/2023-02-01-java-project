@@ -10,18 +10,18 @@ import com.KoreaIT.java.basicAM.dto.Article;
 
 public class Articlecontroller extends Controller {
 	static List<Article> articles = new ArrayList<>();
-	
+
 	private String command;
 	private String actionMethodName;
-	
+
 	public static void maketestdata() {
 		articles.add(new Article(1, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(2, new Date(), new Date(), 0, "테스트", "테스트"));
 		articles.add(new Article(3, new Date(), new Date(), 0, "테스트", "테스트"));
 		System.out.println("테스트 자료 만들어짐.");
-		
+
 	}
-	
+
 	public void doAction(String command, String actionMethodName) {
 		this.command = command;
 		this.actionMethodName = actionMethodName;
@@ -30,33 +30,25 @@ public class Articlecontroller extends Controller {
 		case "list":
 			dolist();
 			break;
-		}
-		
-		switch (actionMethodName) {
+			
 		case "write":
 			dowrite();
 			break;
-		}
-		
-		switch (actionMethodName) {
+			
 		case "delete":
 			dosomething(command);
 			break;
-		}
-		
-		switch (actionMethodName) {
+			
 		case "detail":
 			dosomething(command);
 			break;
-		}
-		
-		switch (actionMethodName) {
+			
 		case "modify":
 			dosomething(command);
 			break;
-		}
+		}		
 	}
-	
+
 	public void dolist() {
 		if (articles.size() == 0) {
 			System.out.println("게시글이 없습니다.");
@@ -67,7 +59,7 @@ public class Articlecontroller extends Controller {
 				System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수);
 			}
 		}
-		
+
 	}
 
 	public void dowrite() {
@@ -85,7 +77,7 @@ public class Articlecontroller extends Controller {
 		articles.add(article);
 		System.out.println(i + "번글이 생성되었습니다");
 		i++;
-		
+
 	}
 
 	public void dosomething(String command) {
@@ -148,9 +140,7 @@ public class Articlecontroller extends Controller {
 			}
 
 		}
-		
+
 	}
-
-
 
 }

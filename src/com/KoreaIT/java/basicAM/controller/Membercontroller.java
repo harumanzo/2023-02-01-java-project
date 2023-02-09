@@ -8,7 +8,7 @@ import java.util.Scanner;
 import com.KoreaIT.java.basicAM.dto.Id;
 import com.KoreaIT.java.basicAM.dto.Member;
 
-public class Membercontroller extends Controller{
+public class Membercontroller extends Controller {
 	static List<Id> ids = new ArrayList<>();
 	private List<Member> members;
 	private Scanner sc;
@@ -19,14 +19,20 @@ public class Membercontroller extends Controller{
 		this.members = members;
 		this.sc = sc;
 	}
-	
+
 	public void doAction(String command, String actionMethodName) {
 		this.command = command;
 		this.actionMethodName = actionMethodName;
-		
+
 		switch (actionMethodName) {
 		case "join":
 			dojoin();
+			break;
+
+		}
+		switch (actionMethodName) {
+		case "login":
+			dologin();
 			break;
 		}
 	}
@@ -99,5 +105,73 @@ public class Membercontroller extends Controller{
 		ids.add(id);
 		System.out.println("회원가입이 완료되었습니다.");
 		memberid++;
+	}
+
+	public void dologin() {
+		Scanner scv = new Scanner(System.in);
+		String nickname = null;
+
+		String password = null;
+
+		String password다시 = null;
+		while (true) {
+			while (true) {
+				System.out.printf("아이디 )");
+				nickname = scv.nextLine().trim();
+				Member member1 = null;
+				if (ids.size() == 0) {
+					System.out.println("유효하지 않은 아이디입니다.");
+					break;
+				} else {
+					for (int p = 0; p < ids.size(); p++) {
+						Member members3 = members.get(p);
+						if ((members3.membername).equals(nickname)) {
+							member1 = members3;
+							break;
+						}
+
+					}
+				}
+				if(member1 == null) {
+					System.out.println("유호하지 않은 아이디입니다.");
+					continue;
+				}else {
+					break;
+				}
+			}
+			while(true) {
+				if (ids.size() == 0) {
+					break;
+				}
+				System.out.printf("비밀번호 )");
+				password = scv.nextLine().trim();
+				Member member1 = null;
+				if (members.size()!=0) {
+					for (int p = 0; p < ids.size(); p++) {
+						Member members3 = members.get(p);
+						if ((members3.membername).equals(nickname)) {
+							member1 = members3;
+							break;
+						}
+
+					}
+				}
+				
+				if(member1.memberpassword == password) {
+					System.out.println("로그인이 완료되었습니다.");
+					break;
+				}else {
+					System.out.println(type(member1.memberpassword));
+					continue;
+				}
+
+			}
+			break;
+		}
+	}
+
+	private char[] type(String memberpassword) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

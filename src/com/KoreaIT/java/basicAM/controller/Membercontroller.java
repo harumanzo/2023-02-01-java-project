@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import com.KoreaIT.java.basicAM.container.Container;
 import com.KoreaIT.java.basicAM.dto.Article;
 import com.KoreaIT.java.basicAM.dto.Member;
 
@@ -16,7 +17,7 @@ public class Membercontroller extends Controller {
 	private String actionMethodName;
 
 	public Membercontroller(List<Member> members, Scanner sc) {
-		this.members = members;
+		this.members = Container.memberDao.members;
 		this.sc = sc;
 	}
 
@@ -318,6 +319,7 @@ public class Membercontroller extends Controller {
 
 		if (loginedmember == null) {
 			System.out.println("로그인을 먼저 해주십시오!!!");
+			return;
 		} else {
 			Member foundMember = null;
 			for (int p = 0; p <= members.size(); p++) {
@@ -343,11 +345,13 @@ public class Membercontroller extends Controller {
 					newpassword = scv.nextLine();
 					System.out.printf("바꾸실 비밀번호 확인 )");
 					newpasswordconfirm = scv.nextLine();
-					if (newpassword.equals(newpasswordconfirm)) {
+					if (newpassword.equals(newpasswordconfirm)==false) {
 						System.out.println("비밀번호가 일치하지 않습니다.");
 						continue;
+					}else {
+						break;
 					}
-					break;
+					
 				}
 				Date update = new Date();
 

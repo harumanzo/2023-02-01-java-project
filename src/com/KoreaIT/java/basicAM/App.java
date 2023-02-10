@@ -18,7 +18,7 @@ public class App {
 		System.out.println("========프로그램 시작========");
 		Scanner sc = new Scanner(System.in);
 		Membercontroller membercontroller = new Membercontroller(members, sc);
-		Articlecontroller articlecontroller = new Articlecontroller();
+		Articlecontroller articlecontroller = new Articlecontroller(sc);
 
 		Articlecontroller.maketestdata();
 		Membercontroller.makeadminaccount();

@@ -8,13 +8,22 @@ import java.util.Scanner;
 
 import com.KoreaIT.java.basicAM.dto.Article;
 import com.KoreaIT.java.basicAM.dto.Member;
+import com.KoreaIT.java.basicAM.container.Container;
 import com.KoreaIT.java.basicAM.controller.Membercontroller;
 
 public class Articlecontroller extends Controller {
-	static List<Article> articles = new ArrayList<>();
-
+	private static List<Article> articles;
+	private Scanner sc;
 	private String command;
 	private String actionMethodName;
+	
+
+	public Articlecontroller(Scanner sc) {
+		this.articles = Container.articleDao.articles;
+		this.sc = sc;
+	}
+
+	
 	
 	public static void maketestdata() {
 		articles.add(new Article(1, new Date(), new Date(), 0, "홍길동" , "action", "테스트", "테스트"));

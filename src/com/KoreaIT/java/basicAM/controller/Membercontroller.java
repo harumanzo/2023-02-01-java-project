@@ -74,7 +74,8 @@ public class Membercontroller extends Controller {
 	}
 
 	public void dojoin() {
-		int memberid = members.size() + 1;
+		Member member4 = members.get(members.size()-1);
+		int memberid = member4.id + 1;
 		Scanner scv = new Scanner(System.in);
 		String nickname = null;
 
@@ -147,7 +148,6 @@ public class Membercontroller extends Controller {
 		Member member = new Member(memberid, now, update, name, nickname, password, 0);
 		members.add(member);
 		System.out.println("회원가입이 완료되었습니다.");
-		memberid++;
 	}
 
 	public void dologin() {

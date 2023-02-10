@@ -73,6 +73,10 @@ public class Membercontroller extends Controller {
 	}
 
 	public void dojoin() {
+		if (loginedmember != null) {
+			System.out.println("이미 로그인상태입니다.");
+			return;
+		}
 		Member member4 = members.get(members.size() - 1);
 		int memberid = member4.id + 1;
 		Scanner scv = new Scanner(System.in);

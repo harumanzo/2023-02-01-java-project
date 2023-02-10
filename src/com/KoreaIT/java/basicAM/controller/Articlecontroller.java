@@ -69,6 +69,7 @@ public class Articlecontroller extends Controller {
 			System.out.println("로그인 후 이용해주십시오");
 			return;
 		}
+
 		
 		Article article1 = articles.get(articles.size()-1);
 		int i = article1.id + 1;

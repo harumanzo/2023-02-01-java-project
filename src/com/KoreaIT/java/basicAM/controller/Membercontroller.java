@@ -21,14 +21,14 @@ public class Membercontroller extends Controller {
 	}
 
 	public static void maketestdata() {
-		members.add(new Member(1, new Date(), new Date(), "홍길동", "action", "1234",1));
-		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234",1));
-		members.add(new Member(3, new Date(), new Date(), "홍학범", "naming", "1234",1));
+		members.add(new Member(1, new Date(), new Date(), "홍길동", "action", "1234", 1));
+		members.add(new Member(2, new Date(), new Date(), "홍길순", "method", "1234", 1));
+		members.add(new Member(3, new Date(), new Date(), "홍학범", "naming", "1234", 1));
 		System.out.println("테스트 회원 만들어짐.");
 	}
 
 	public static void makeadminaccount() {
-		members.add(new Member(0, new Date(), new Date(), "관리자", "admin", "admin1234",0));
+		members.add(new Member(0, new Date(), new Date(), "관리자", "admin", "admin1234", 0));
 	}
 
 	public void doAction(String command, String actionMethodName) {
@@ -55,7 +55,7 @@ public class Membercontroller extends Controller {
 		case "detail":
 			doadminsomething(command);
 			break;
-			
+
 		case "list":
 			doadminsomething(command);
 			break;
@@ -63,18 +63,17 @@ public class Membercontroller extends Controller {
 		case "modify":
 			dosomething(command);
 			break;
-		
+
 		case "withdraw":
 			dosomething(command);
 			break;
-			
 
 		}
 
 	}
 
 	public void dojoin() {
-		Member member4 = members.get(members.size()-1);
+		Member member4 = members.get(members.size() - 1);
 		int memberid = member4.id + 1;
 		Scanner scv = new Scanner(System.in);
 		String nickname = null;
@@ -155,6 +154,10 @@ public class Membercontroller extends Controller {
 		String nickname = null;
 
 		String password = null;
+		if (loginedmember != null) {
+			System.out.println("이미 로그인상태입니다.");
+			return;
+		}
 
 		while (true) {
 
@@ -199,20 +202,7 @@ public class Membercontroller extends Controller {
 
 					}
 				}
-				if (loginedmember != null) {
-					if (loginedmember.membername.equals(nickname)) {
-						System.out.println("이미 로그인된 아이디입니다");
-						break;
-					} else if (member1.memberpassword.equals(password)) {
-						System.out.println("로그인이 완료되었습니다.");
-						loginedmember = member1;
-						System.out.printf("%s님 환영합니다.\n", loginedmember.name);
-						break;
-					} else {
-						System.out.println("잘못된 비밀번호입니다.");
-						continue;
-					}
-				} else {
+				if (member1 != null) {
 					if (member1.memberpassword.equals(password)) {
 						System.out.println("로그인이 완료되었습니다.");
 						loginedmember = member1;
@@ -261,13 +251,14 @@ public class Membercontroller extends Controller {
 					System.out.println("회원번호 /  이름  /  아이디  /  게시글수");
 					for (int i2 = members.size() - 1; i2 >= 0; i2--) {
 						Member members2 = members.get(i2);
-						System.out.println(members2.id + "   / " + members2.name + "  /  " + members2.membername +"  /  " +members2.memberwrite);
+						System.out.println(members2.id + "   / " + members2.name + "  /  " + members2.membername
+								+ "  /  " + members2.memberwrite);
 					}
 				}
-			}else {
+			} else {
 				System.out.println("존재하지 않는 명령어입니다");
 				return;
-			}			
+			}
 		} else {
 			int n = Integer.parseInt(arr[2]);
 			Member foundMember = null;
@@ -343,7 +334,7 @@ public class Membercontroller extends Controller {
 				String newname = scv.nextLine();
 				String newpassword = null;
 				String newpasswordconfirm = null;
-				while(true) {
+				while (true) {
 					System.out.printf("바꾸실 비밀번호 )");
 					newpassword = scv.nextLine();
 					System.out.printf("바꾸실 비밀번호 확인 )");
@@ -361,7 +352,7 @@ public class Membercontroller extends Controller {
 				foundMember.update = update;
 				System.out.println("회원님의 정보가 수정되었습니다.");
 			}
-			
+
 			if (arr[1].equals("mypage")) {
 				SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM HH:mm:ss");
 				System.out.println("회원번호 : " + foundMember.id);

@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import com.KoreaIT.java.basicAM.dto.Article;
 import com.KoreaIT.java.basicAM.dto.Member;
+import com.KoreaIT.java.basicAM.service.ArticleService;
 import com.KoreaIT.java.basicAM.container.Container;
 import com.KoreaIT.java.basicAM.controller.Membercontroller;
 
@@ -16,9 +17,11 @@ public class Articlecontroller extends Controller {
 	private Scanner sc;
 	private String command;
 	private String actionMethodName;
+	private ArticleService articleservice;
 	
 
 	public Articlecontroller(Scanner sc) {
+		this.articleservice = Container.articleService;
 		this.articles = Container.articleDao.articles;
 		this.sc = sc;
 	}
@@ -94,7 +97,7 @@ public class Articlecontroller extends Controller {
 		
 
 		Article article = new Article(i, now, update, 조회수,loginedmember.name,loginedmember.membername, command2, command3);
-		articles.add(article);
+		Container.articleService.add(article);
 		loginedmember.memberwrite ++;
 		System.out.println(i + "번글이 생성되었습니다");
 
@@ -152,7 +155,7 @@ public class Articlecontroller extends Controller {
 					for (int p = 1; p <= articles.size(); p++) {
 						Article article3 = articles.get(p - 1);
 						if (n == article3.id) {
-							articles.remove(p - 1);
+							Container.articleService.remove(p - 1);
 							System.out.println(n + "번 게시물이 삭제되었습니다.");
 							break;
 						}

@@ -26,6 +26,11 @@ public class App {
 		
 
 		while (true) {
+			if(loginedMember !=null) {
+				System.out.println("1.회원가입   2.로그인   3. 글목록   4. 글 정보");
+			}else {
+				System.out.println("1.로그아웃   2.회원정보   3.회원정보수정   4.회원탈퇴   5.글목록   6.글쓰기");
+			}
 
 			System.out.printf("명령어 )");
 			String command = sc.nextLine().trim();

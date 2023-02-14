@@ -12,4 +12,14 @@ public class ArticleDao {
 	public ArticleDao() {
 		articles = new ArrayList<>();
 	}
+
+	public void add(Article article) {
+		articles.add(article);
+		
+	}
+
+	public void remove(int i) {
+		articles.remove(i);
+		
+	}
 }

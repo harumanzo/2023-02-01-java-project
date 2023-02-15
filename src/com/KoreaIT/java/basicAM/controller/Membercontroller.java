@@ -64,6 +64,10 @@ public class Membercontroller extends Controller {
 		case "modify":
 			dosomething(command);
 			break;
+			
+		case "mypage":
+			dosomething(command);
+			break;
 
 		case "withdraw":
 			dosomething(command);
@@ -361,7 +365,7 @@ public class Membercontroller extends Controller {
 				System.out.println("회원님의 정보가 수정되었습니다.");
 			}
 
-			if (arr[1].equals("mypage")) {
+			else if (arr[1].equals("mypage")) {
 				SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM HH:mm:ss");
 				System.out.println("회원번호 : " + foundMember.id);
 				System.out.println("가입날짜 : " + formatter.format(foundMember.now));
@@ -378,6 +382,7 @@ public class Membercontroller extends Controller {
 						members.remove(p);
 						System.out.println("회원이 삭제되었습니다.");
 						System.out.println("안녕히 가십시오");
+						loginedmember = null;
 						break;
 					}
 

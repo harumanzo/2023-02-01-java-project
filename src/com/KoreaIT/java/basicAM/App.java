@@ -77,6 +77,10 @@ public class App extends Controller{
 					System.out.println("명령어를 입력해주세요");
 					continue;
 				}
+				
+				if(command.equals("1")) {
+					command = "member join";
+				}
 
 				String[] commandBits = command.split(" "); // article detail 1 / member join
 

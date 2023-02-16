@@ -275,10 +275,7 @@ public class App extends Controller{
 
 				String[] commandBits = command.split(" "); // article detail 1 / member join
 
-				if (commandBits.length == 1) {
-					System.out.println("명령어 확인 후 다시 입력해주세요");
-					continue;
-				}
+				
 
 				String controllerName = commandBits[0];
 				String actionMethodName = commandBits[1];
@@ -293,14 +290,8 @@ public class App extends Controller{
 					if (controllerName.equals("system")) {
 						if (actionMethodName.equals("exit")) {
 							break;
-						}else {
-							System.out.println("존재하지 않는 명령어 입니다.");
-							continue;
 						}
 
-					} else {
-						System.out.println("존재하지 않는 명령어 입니다.");
-						continue;
 					}
 
 				}

@@ -108,8 +108,44 @@ public class Articlecontroller extends Controller {
 	}
 	public void dosearch(String command) {
 		String[] arr = command.split(" ");
-		System.out.println(command);
-		return;
+		if(arr.length <=3) {
+			System.out.println("검색어를 입력해주세요");
+			return;
+		}		
+		if (arr[2].equals("title")) {
+			System.out.println("번호 /  제목  /  조회수  /  작성자");
+			for (int i2 = articles.size() - 1; i2 >= 0; i2--) {
+				Article articles2 = articles.get(i2);
+				if(arr[3].equals(articles2.command2)) {
+					System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수 +"  /  " +articles2.name);
+				}else {
+					continue;
+				}
+				
+			}
+		}else if (arr[2].equals("content")) {
+			System.out.println("번호 /  제목  /  조회수  /  작성자");
+			for (int i2 = articles.size() - 1; i2 >= 0; i2--) {
+				Article articles2 = articles.get(i2);
+				if(arr[3].equals(articles2.command3)) {
+					System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수 +"  /  " +articles2.name);
+				}else {
+					continue;
+				}
+				
+			}
+		}else if (arr[2].equals("writer")) {
+			System.out.println("번호 /  제목  /  조회수  /  작성자");
+			for (int i2 = articles.size() - 1; i2 >= 0; i2--) {
+				Article articles2 = articles.get(i2);
+				if(arr[3].equals(articles2.name)) {
+					System.out.println(articles2.id + "   / " + articles2.command2 + "  /  " + articles2.조회수 +"  /  " +articles2.name);
+				}else {
+					continue;
+				}
+				
+			}
+		}
 	}
 
 	public void dosomething(String command) {

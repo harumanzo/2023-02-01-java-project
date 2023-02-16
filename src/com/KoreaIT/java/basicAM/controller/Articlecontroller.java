@@ -60,6 +60,10 @@ public class Articlecontroller extends Controller {
 		case "modify":
 			dosomething(command);
 			break;
+			
+		case "search":
+			dosearch(command);
+			break;
 		}		
 	}
 
@@ -101,6 +105,11 @@ public class Articlecontroller extends Controller {
 		loginedmember.memberwrite ++;
 		System.out.println(i + "번글이 생성되었습니다");
 
+	}
+	public void dosearch(String command) {
+		String[] arr = command.split(" ");
+		System.out.println(command);
+		return;
 	}
 
 	public void dosomething(String command) {

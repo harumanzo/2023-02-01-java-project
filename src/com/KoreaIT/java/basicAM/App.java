@@ -68,7 +68,12 @@ public class App extends Controller{
 						String command1 = sc.nextLine().trim();
 						command = "member delete "+command1;
 					}else if(command.equals("10")) {
-						command = "system exit";
+						System.out.println("1.제목   2.내용   3.작성자");
+						System.out.printf("검색할 주제를 정해주세요 )");
+						String command1 = sc.nextLine().trim();
+						System.out.printf("검색어를 입력해주세요 )");
+						String command2 = sc.nextLine().trim();
+						command = "article search "+command1+" "+command2;
 					}else if(command.equals("11")) {
 						command = "system exit";
 					}else {

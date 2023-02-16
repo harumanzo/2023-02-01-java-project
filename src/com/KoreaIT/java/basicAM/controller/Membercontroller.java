@@ -275,7 +275,7 @@ public class Membercontroller extends Controller {
 			if (members.size() == 0) {
 				System.out.println(n + "번 회원은 존재하지 않습니다.");
 			} else {
-				for (int p = 0; p <= members.size(); p++) {
+				for (int p = 0; p < members.size(); p++) {
 					Member member1 = members.get(p);
 					if (n == member1.id) {
 						foundMember = member1;
@@ -286,6 +286,7 @@ public class Membercontroller extends Controller {
 			}
 			if (foundMember == null) {
 				System.out.println(n + "번 회원은 존재하지 않습니다.");
+				return;
 			} else {
 				if (arr[1].equals("detail")) {
 					SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM HH:mm:ss");
@@ -379,6 +380,10 @@ public class Membercontroller extends Controller {
 				for (int p = 0; p <= members.size(); p++) {
 					Member member3 = members.get(p);
 					if (loginedmember.membername.equals(member3.membername)) {
+						if(loginedmember.name.equals("관리자")) {
+							System.out.println("관리자는 삭제할수 없습니다!!!");
+							break;
+						}
 						members.remove(p);
 						System.out.println("회원이 삭제되었습니다.");
 						System.out.println("안녕히 가십시오");

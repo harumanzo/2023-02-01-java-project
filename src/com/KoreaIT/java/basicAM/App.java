@@ -69,8 +69,22 @@ public class App extends Controller{
 						command = "member delete "+command1;
 					}else if(command.equals("10")) {
 						System.out.println("1.제목   2.내용   3.작성자");
-						System.out.printf("검색할 주제를 정해주세요 )");
-						String command1 = sc.nextLine().trim();
+						String command1 = null;
+						while(true) {
+							System.out.printf("검색할 주제를 정해주세요 )");
+							command1 = sc.nextLine().trim();
+							if(command1.equals("1")) {
+								command1 = "title";
+							}else if(command1.equals("2")) {
+								command1 = "content";
+							}else if(command1.equals("3")) {
+								command1 = "writer";
+							}else {
+								System.out.println("잘못된 접근입니다.");
+								continue;
+							}
+							break;
+						}
 						System.out.printf("검색어를 입력해주세요 )");
 						String command2 = sc.nextLine().trim();
 						command = "article search "+command1+" "+command2;
@@ -143,7 +157,26 @@ public class App extends Controller{
 						String command1 = sc.nextLine().trim();
 						command = "member delete "+command1;
 					}else if(command.equals("10")) {
-						command = "system exit";
+						System.out.println("1.제목   2.내용   3.작성자");
+						String command1 = null;
+						while(true) {
+							System.out.printf("검색할 주제를 정해주세요 )");
+							command1 = sc.nextLine().trim();
+							if(command1.equals("1")) {
+								command1 = "title";
+							}else if(command1.equals("2")) {
+								command1 = "content";
+							}else if(command1.equals("3")) {
+								command1 = "writer";
+							}else {
+								System.out.println("잘못된 접근입니다.");
+								continue;
+							}
+							break;
+						}
+						System.out.printf("검색어를 입력해주세요 )");
+						String command2 = sc.nextLine().trim();
+						command = "article search "+command1+" "+command2;
 					}else if(command.equals("11")) {
 						command = "system exit";
 					}else {
@@ -213,7 +246,26 @@ public class App extends Controller{
 					String command1 = sc.nextLine().trim();
 					command = "article detail "+command1;
 				}else if(command.equals("5")) {
-					command = "system exit";
+					System.out.println("1.제목   2.내용   3.작성자");
+					String command1 = null;
+					while(true) {
+						System.out.printf("검색할 주제를 정해주세요 )");
+						command1 = sc.nextLine().trim();
+						if(command1.equals("1")) {
+							command1 = "title";
+						}else if(command1.equals("2")) {
+							command1 = "content";
+						}else if(command1.equals("3")) {
+							command1 = "writer";
+						}else {
+							System.out.println("잘못된 접근입니다.");
+							continue;
+						}
+						break;
+					}
+					System.out.printf("검색어를 입력해주세요 )");
+					String command2 = sc.nextLine().trim();
+					command = "article search "+command1+" "+command2;
 				}else if(command.equals("6")) {
 					command = "system exit";
 				}else {
